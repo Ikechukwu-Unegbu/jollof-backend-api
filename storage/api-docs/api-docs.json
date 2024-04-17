@@ -433,6 +433,352 @@
                 }
             }
         },
+        "/api/v1/vendors": {
+            "get": {
+                "tags": [
+                    "Vendors"
+                ],
+                "summary": "Get all vendors",
+                "operationId": "0ce853fd80ca26a224489ebf9c9652f6",
+                "parameters": [
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Number of vendors per page",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 15
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "current_page": {
+                                            "description": "The current page number",
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "description": "Array of vendors",
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Vendor"
+                                            }
+                                        },
+                                        "first_page_url": {
+                                            "description": "URL of the first page",
+                                            "type": "string"
+                                        },
+                                        "from": {
+                                            "description": "Index of the first vendor in the current page",
+                                            "type": "integer"
+                                        },
+                                        "last_page": {
+                                            "description": "The last page number",
+                                            "type": "integer"
+                                        },
+                                        "last_page_url": {
+                                            "description": "URL of the last page",
+                                            "type": "string"
+                                        },
+                                        "next_page_url": {
+                                            "description": "URL of the next page",
+                                            "type": "string"
+                                        },
+                                        "path": {
+                                            "description": "URL path of the current page",
+                                            "type": "string"
+                                        },
+                                        "per_page": {
+                                            "description": "Number of vendors per page",
+                                            "type": "integer"
+                                        },
+                                        "prev_page_url": {
+                                            "description": "URL of the previous page",
+                                            "type": "string"
+                                        },
+                                        "to": {
+                                            "description": "Index of the last vendor in the current page",
+                                            "type": "integer"
+                                        },
+                                        "total": {
+                                            "description": "Total number of vendors",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Vendors"
+                ],
+                "summary": "Create a new vendor",
+                "operationId": "6888e3bccd1c2b9a379e329f219ad205",
+                "requestBody": {
+                    "description": "Vendor data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "business_type_id",
+                                    "description",
+                                    "phone",
+                                    "address",
+                                    "city",
+                                    "state",
+                                    "country",
+                                    "user"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "The name of the vendor",
+                                        "type": "string",
+                                        "maxLength": 255
+                                    },
+                                    "email": {
+                                        "description": "The email address of the vendor",
+                                        "type": "string",
+                                        "format": "email",
+                                        "maxLength": 255
+                                    },
+                                    "business_type_id": {
+                                        "description": "The ID of the business type for the vendor",
+                                        "type": "integer"
+                                    },
+                                    "description": {
+                                        "description": "The description of the vendor",
+                                        "type": "string",
+                                        "maxLength": 1000
+                                    },
+                                    "phone": {
+                                        "description": "The phone number of the vendor",
+                                        "type": "string",
+                                        "maxLength": 255
+                                    },
+                                    "address": {
+                                        "description": "The address of the vendor",
+                                        "type": "string",
+                                        "maxLength": 1000
+                                    },
+                                    "city": {
+                                        "description": "The city of the vendor",
+                                        "type": "string",
+                                        "maxLength": 255
+                                    },
+                                    "state": {
+                                        "description": "The state of the vendor",
+                                        "type": "string",
+                                        "maxLength": 255
+                                    },
+                                    "country": {
+                                        "description": "The country of the vendor",
+                                        "type": "string",
+                                        "maxLength": 255
+                                    },
+                                    "user": {
+                                        "description": "The user details associated with the vendor",
+                                        "type": "object"
+                                    },
+                                    "coupon_status": {
+                                        "description": "The status of the coupon associated with the vendor",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Vendor created successfully"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/v1/vendors/{id}": {
+            "get": {
+                "tags": [
+                    "Vendors"
+                ],
+                "summary": "Get a single vendor",
+                "operationId": "864c3fadea6ecf4d789a2296a86ba16d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the vendor to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "The ID of the vendor",
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "description": "The name of the vendor",
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "description": "The email address of the vendor",
+                                            "type": "string"
+                                        },
+                                        "business_type_id": {
+                                            "description": "The ID of the business type for the vendor",
+                                            "type": "integer"
+                                        },
+                                        "description": {
+                                            "description": "The description of the vendor",
+                                            "type": "string"
+                                        },
+                                        "phone": {
+                                            "description": "The phone number of the vendor",
+                                            "type": "string"
+                                        },
+                                        "address": {
+                                            "description": "The address of the vendor",
+                                            "type": "string"
+                                        },
+                                        "city": {
+                                            "description": "The city of the vendor",
+                                            "type": "string"
+                                        },
+                                        "state": {
+                                            "description": "The state of the vendor",
+                                            "type": "string"
+                                        },
+                                        "country": {
+                                            "description": "The country of the vendor",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Vendor not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Vendors"
+                ],
+                "summary": "Update an existing vendor",
+                "operationId": "ff9ad2af2d8c6ce6337abed19fc9ed53",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the vendor to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Vendor data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "logo": {
+                                        "description": "The logo image of the vendor",
+                                        "type": "string"
+                                    },
+                                    "cover_image": {
+                                        "description": "The cover image of the vendor",
+                                        "type": "string"
+                                    },
+                                    "latitude": {
+                                        "description": "The latitude of the vendor location",
+                                        "type": "number"
+                                    },
+                                    "longitude": {
+                                        "description": "The longitude of the vendor location",
+                                        "type": "number"
+                                    },
+                                    "address": {
+                                        "description": "The address of the vendor",
+                                        "type": "string"
+                                    },
+                                    "city": {
+                                        "description": "The city of the vendor",
+                                        "type": "string"
+                                    },
+                                    "state": {
+                                        "description": "The state of the vendor",
+                                        "type": "string"
+                                    },
+                                    "country": {
+                                        "description": "The country of the vendor",
+                                        "type": "string"
+                                    },
+                                    "min_order": {
+                                        "description": "The minimum order amount for the vendor",
+                                        "type": "string"
+                                    },
+                                    "low_boundary": {
+                                        "description": "The low boundary value for the vendor",
+                                        "type": "string"
+                                    },
+                                    "upper_boundary": {
+                                        "description": "The upper boundary value for the vendor",
+                                        "type": "string"
+                                    },
+                                    "coupon_status": {
+                                        "description": "The status of the coupon associated with the vendor",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Vendor updated successfully"
+                    },
+                    "404": {
+                        "description": "Vendor not found"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
         "/api/v1/vendor-categories": {
             "get": {
                 "tags": [
@@ -502,6 +848,53 @@
                     "updated_at": {
                         "type": "string",
                         "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Vendor": {
+                "title": "Vendor",
+                "description": "Vendor model",
+                "properties": {
+                    "id": {
+                        "description": "The ID of the vendor",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "The name of the vendor",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The email address of the vendor",
+                        "type": "string"
+                    },
+                    "business_type_id": {
+                        "description": "The ID of the business type for the vendor",
+                        "type": "integer"
+                    },
+                    "description": {
+                        "description": "The description of the vendor",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The phone number of the vendor",
+                        "type": "string"
+                    },
+                    "address": {
+                        "description": "The address of the vendor",
+                        "type": "string"
+                    },
+                    "city": {
+                        "description": "The city of the vendor",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "The state of the vendor",
+                        "type": "string"
+                    },
+                    "country": {
+                        "description": "The country of the vendor",
+                        "type": "string"
                     }
                 },
                 "type": "object"
