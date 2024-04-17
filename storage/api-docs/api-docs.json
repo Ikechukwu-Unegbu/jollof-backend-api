@@ -391,6 +391,88 @@
                     }
                 }
             }
+        },
+        "/api/v1/business-types": {
+            "get": {
+                "tags": [
+                    "Business Types"
+                ],
+                "summary": "Get all business types",
+                "operationId": "8dd05d1f9e2be340495a67b33c766f51",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "description": "The ID of the business type",
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "description": "The name of the business type",
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "description": "The description of the business type",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Business types not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/vendor-categories": {
+            "get": {
+                "tags": [
+                    "Vendor Categories"
+                ],
+                "summary": "Get all vendor categories",
+                "operationId": "a41164953cb57f065b0e39cd71ea3f7e",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "name": {
+                                                "description": "The name of the vendor category (required)",
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "description": "The description of the vendor category",
+                                                "type": "string"
+                                            },
+                                            "img_url": {
+                                                "description": "The image URL of the vendor category",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
         }
     },
     "components": {

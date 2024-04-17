@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\V1\Vendor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\Api\V1\Vendor\VendorService;
+use App\Http\Requests\V1\Vendor\VendorCreationRequest;
+
 
 
 class VendorController extends Controller
@@ -34,10 +36,10 @@ class VendorController extends Controller
         return response()->json($this->vendorService->fetchVendor($vendor));
     }
 
-    public function update(VendorUpdateRequest $request, int $vendor_id)
-    {
-        return response()->json($this->vendorService->updateVendor($request->validated(), $vendorId));
-    }
+    // public function update(VendorUpdateRequest $request, int $vendor_id)
+    // {
+    //     return response()->json($this->vendorService->updateVendor($request->validated(), $vendorId));
+    // }
 
-  
+    
 }

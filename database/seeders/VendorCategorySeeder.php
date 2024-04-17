@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Api\V1\System\VendorCategory;
+use App\Models\Api\V1\VendorCategory;
 
 class VendorCategorySeeder extends Seeder
 {

@@ -3,7 +3,7 @@
 namespace App\Http\Requests\V1\Vendor;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Http\Requests\VendorRequest;
+use App\Http\Requests\V1\Vendor\VendorRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 

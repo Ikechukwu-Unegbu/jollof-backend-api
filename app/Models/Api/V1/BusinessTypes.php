@@ -4,6 +4,7 @@ namespace App\Models\Api\V1;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class BusinessTypes extends Model
@@ -16,5 +17,9 @@ class BusinessTypes extends Model
      * @var string
      */
     protected $table = 'businesses';
+    protected $fillable = [
+        'name',
+        'description',
+    ];
     
 }
