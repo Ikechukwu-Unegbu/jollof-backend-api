@@ -86,6 +86,17 @@ services:
                 - 'http://localhost:7700/health'
             retries: 3
             timeout: 5s
+    phpmyadmin:
+        depends_on:
+            - mysql
+        image: phpmyadmin
+        environment:
+            - PMA_HOST=mysql
+            - PMA_PORT=3306
+        networks:
+            - sail 
+        ports:
+            - 8004:80
     mailpit:
         image: 'axllent/mailpit:latest'
         ports:
